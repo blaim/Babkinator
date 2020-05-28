@@ -25,7 +25,7 @@ class RestaurantMarker:
 
     # 충북대학교와 원하는 식당을 표시한 지도 html로 저장
     def save_html(self):
-        self.map.save('restaurant_marked_map.html')
+        self.map.save('./django_test/templates/restaurant_marked_map.html')
 
 
 # 선언 및 사용 예시
