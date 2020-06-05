@@ -1,5 +1,7 @@
+<!--  made by 임경수 -->
 <html>
 	<head>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<style>
 					*{
 						padding:0px;
@@ -7,7 +9,7 @@
 					}
 					body{
 
-						background-color:pink;
+						background-color:black;
 						text-align:center;
 
 
@@ -17,7 +19,7 @@
 							width:90%;
 							height:90%;
 							display:grid;
-							background-color:pink;
+							background-color:black;
 							margin:0px;
 							grid-template-columns : 16% 16% 16% 16% 16% 16%;
 							grid-template-rows : 16% 16% 16% 16% 16% 16%;
@@ -25,11 +27,10 @@
 							overflow:hidden;
 							padding:20px;
 					}
-					div div{
-						background-color : #08ffc8;
+					div>div{
+						background-color : white;
+						border:2px black solid;
 
-						border-radius:100px;
-						color:#204969;
 
 					}
 
@@ -53,7 +54,7 @@
 						grid-column-end:7;
 					}
 					#phone p{
-						line-height:50px;
+
 						font-size:3vw;
 						font-weight:bold;
 						line-height:100px;
@@ -61,29 +62,27 @@
 
 					#grade{
 						grid-column-start:1;
-						grid-column-end:3;
+						grid-column-end:6;
 						grid-row-start:2;
 						grid-row-end:3;
 					}
-					#review{
+					#review_show{
 						grid-column-start:1;
-						grid-column-end:3;
+						grid-column-end:4;
 						grid-row-start:3;
 						grid-row-end:6;
-					}
-
-					#res_map{
-						grid-column-start:3;
-						grid-column-end:6;
-						grid-row-start:2;
-						grid-row-end:6;
+						position:relative;
 						width:100%;
 						height:100%;
-						background-color:pink;
-						border-radius:100px;
-						transition:width 2s, height:2s;
-						padding:0px;
-						position:relative;
+					}
+
+					#write_review
+					{
+						grid-column-start:4;
+						grid-column-end:6;
+						grid-row-start:3;
+						grid-row-end:6;
+
 					}
 
 
@@ -95,11 +94,28 @@
 						grid-row-end:3;
 					}
 
+					#res_price p {
+						font-size:3vw;
+						font-weight:bold;
+						line-height:100px;
+					}
+
 					#res_menu{
+						border-radius:0px;
 						grid-column-start:6;
 						grid-column-end:7;
 						grid-row-start:3;
 						grid-row-end:6;
+						overflow:auto;
+					}
+
+					#res_menu p{
+						background-color:#dadada;
+						width:100%;
+						height:15%;
+						font-size:2vw;
+						border-bottom:4px black solid;
+
 					}
 
 					#res_site{
@@ -114,22 +130,15 @@
 						width:100%;
 						height:100%;
 						font-size:5vw;
-						color:#204969;
+						color:black;
 						display:block;
-						border-radius:100px;
+
 					}
 
 					#res_site>a:hover{
 						background-color:yellow;
 					}
 
-					#res_map iframe{
-						width:100%;
-						height:90%;
-						border-radius:100px;
-						margin:0px;
-
-					}
 
 
 
@@ -137,20 +146,55 @@
 						width:100%;
 						height:10%;
 						background-color:blue;
-						border-radius:100px;
+
 
 					}
 
-					#footer{
-						position:fixed;
-						width:100%;
-						overflow:hidden;
-						background-color:#a64942;
-						bottom:0;
-						height:5%;
+
+
+		#write_review form{
+			width:80%;
+			height:80%;
+			margin:0px auto;
+		}
+
+		input[type=textbox]{
+			display:block;
+			width:100%;
+			height:100%;
+
+		}
+
+		input[type=submit]{
+			width:100%;
+
+		}
+
+		input[type=text]{
+			display:none;
+		}
+
+		.checked{
+			color:orange;
+			font-size:7vw;
+			}
+
+		#grad{
+			float:left;
+			}
+
+		#footer{
+
+				width:100%;
+				overflow:hidden;
+				position:fixed;
+				background-color:black;
+				bottom:0;
+				height:5%;
 
 
 		}
+
 		#footer a{
 			margin:0px 20px;
 			text-decoration:overline underline;
@@ -170,13 +214,33 @@
 			<div id="mainbox">
 					<div id="res_name"><p>{{information.2}}</p></div>
 					<div id="phone"><p>{{information.4}}</p></div>
-					<div id="grade"><p>평점</p></div>
-					<div id="review"><p>리뷰</p></div>
-					<div id="res_map">
-							<button id="big_map" onclick="big_map()"><p>전체화면으로</p></button>
-							<iframe src="C:/Users/dlaru/PycharmProjects/django_test/django_test/templates/restaurant_one_map.html">
-							</iframe>
+					<div id="grade">
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
 					</div>
+					<div id="review_show">
+						<button id="big_map" onclick="big_map()">전체화면으로</button>
+						<p>리뷰</p>
+					</div>
+
+					<div id="write_review">
+						<form method="post" autocomplete="off">
+							{% csrf_token %}
+							<p id="grad">평점 : </p>
+							<input type="text" name="review_name" value="{{information.2}}">
+							<input type="radio" name="grade" value="1">1
+							<input type="radio" name="grade" value="2">2
+							<input type="radio" name="grade" value="3">3
+							<input type="radio" name="grade" value="4">4
+							<input type="radio" name="grade" value="5">5
+							<input name="review" type="textbox"  Multiline="True" Enterkeybehavior="True">
+							<input type="submit" value="리뷰 작성">
+						</form>
+					</div>
+
 
 					<div id="res_price"><p>{{information.8}}</p></div>
 					<div id="res_menu">
@@ -202,17 +266,19 @@
 				if(is_big==0)
 				{
 					is_big = 1;
-					document.getElementById("res_map").style.position = "absolute";
+					document.getElementById("review_show").style.position = "absolute";
 					document.getElementById("big_map").innerHTML = "작은화면으로";
 
 				}
 				else
 				{
 					is_big = 0;
-					document.getElementById("res_map").style.position = "static";
+					document.getElementById("review_show").style.position = "static";
 					document.getElementById("big_map").innerHTML = "전체화면으로";
 				}
 			}
+
+
 	</script>
 	</body>
 </html>
