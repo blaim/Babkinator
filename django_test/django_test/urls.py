@@ -13,10 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+''' made by 임경수'''
+
 from django.contrib import admin
 from django.urls import path
 from . import views
-from . import Restaurant_Marker
 
 urlpatterns = [
     path('', views.main),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('ressearch/', views.res_name_search),
     path('mnsearch/', views.menu_search),
     path('information/', views.information),
+    path('correction/', views.request_correction),
 
 ]
