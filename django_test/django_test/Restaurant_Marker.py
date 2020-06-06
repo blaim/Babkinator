@@ -29,7 +29,7 @@ class RestaurantMarker:
 
 
 # 선언 및 사용 예시
-Restaurant = RestaurantMarker()
+"""Restaurant = RestaurantMarker()
 Restaurant.restaurant_marker("삼미투가리백숙", 36.640393, 127.468736)
 Restaurant.center_marker()
-Restaurant.save_html()
+Restaurant.save_html()"""
