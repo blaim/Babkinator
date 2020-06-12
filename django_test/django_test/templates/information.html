@@ -1,31 +1,42 @@
 <!--  made by 임경수 -->
 <html>
 	<head>
+		<title>information</title>
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0, user-scalable=no, target-densitydpi=medium-dpi" />
 			<style>
 					*{
 						padding:0px;
 						margin:0px;
+						font-family: 'Jua', sans-serif;
+					}
+					html
+					{
+						-webkit-text-size-adjust: auto;
+
 					}
 					body{
 
-						background-color:black;
+						background-color:grey;
 						text-align:center;
 
 
 					}
 					#mainbox{
 							justify-content:center;
-							width:90%;
+							width:87%;
 							height:90%;
 							display:grid;
-							background-color:black;
+							background-color:grey;
 							margin:0px;
 							grid-template-columns : 16% 16% 16% 16% 16% 16%;
 							grid-template-rows : 16% 16% 16% 16% 16% 16%;
 							grid-gap:10px;
 							overflow:hidden;
 							padding:20px;
+
+
 					}
 					div>div{
 						background-color : white;
@@ -36,7 +47,7 @@
 
 					#res_name{
 						grid-column-start:1;
-						grid-column-end:5;
+						grid-column-end:4;
 
 					}
 
@@ -44,60 +55,79 @@
 
 						width:100%;
 						height:100%;
-						font-size:4vw;
+						font-size:5vmax;
 						font-weight:bold;
-						line-height:100px;
+
+
 					}
 
 					#phone{
-						grid-column-start:5;
+						grid-column-start:4;
 						grid-column-end:7;
+
 					}
 					#phone p{
 
-						font-size:3vw;
+						font-size:5vmax;
 						font-weight:bold;
-						line-height:100px;
+
+
 					}
 
 					#grade{
 						grid-column-start:1;
-						grid-column-end:6;
+						grid-column-end:4;
 						grid-row-start:2;
 						grid-row-end:3;
 					}
 					#review_show{
 						grid-column-start:1;
-						grid-column-end:4;
+						grid-column-end:3;
 						grid-row-start:3;
 						grid-row-end:6;
 						position:relative;
-						width:100%;
-						height:100%;
+						width:95%;
+						height:95%;
+						overflow:hidden;
+					}
+
+					#review_show>div{
+						border:none;
+						margin-top:30px;
+
+					}
+					#review_show div h1{
+						font-size:5vmax;
+					}
+					#review_show div p
+					{
+						font-size:3vmax;
 					}
 
 					#write_review
 					{
-						grid-column-start:4;
+						grid-column-start:3;
 						grid-column-end:6;
 						grid-row-start:3;
 						grid-row-end:6;
-
+						overflow:hidden;
 					}
 
 
 
 					#res_price{
-						grid-column-start:6;
+						grid-column-start:4;
 						grid-column-end:7;
 						grid-row-start:2;
 						grid-row-end:3;
+
 					}
 
 					#res_price p {
-						font-size:3vw;
+						font-size:5vmax;
 						font-weight:bold;
-						line-height:100px;
+
+
 					}
 
 					#res_menu{
@@ -112,8 +142,8 @@
 					#res_menu p{
 						background-color:#dadada;
 						width:100%;
-						height:15%;
-						font-size:2vw;
+
+						font-size:2vmax;
 						border-bottom:4px black solid;
 
 					}
@@ -123,21 +153,20 @@
 						grid-column-end:7;
 						grid-row-start:6;
 						grid-row-end:7;
+						transition:all 0.5s;
 					}
 
 					#res_site>a{
 						text-decoration:none;
 						width:100%;
 						height:100%;
-						font-size:5vw;
+						font-size:5vmax;
 						color:black;
 						display:block;
 
 					}
 
-					#res_site>a:hover{
-						background-color:yellow;
-					}
+
 
 
 
@@ -145,39 +174,50 @@
 					#big_map{
 						width:100%;
 						height:10%;
-						background-color:blue;
-
-
+						background-color:black;
+						color:white;
+					}
+					#big_map:hover{
+						background-color:white;
+						color:black;
+						
 					}
 
 
 
 		#write_review form{
 			width:80%;
-			height:80%;
+			height:70%;
 			margin:0px auto;
+
 		}
 
-		input[type=textbox]{
+		textarea{
 			display:block;
 			width:100%;
-			height:100%;
-
+			height:90%;
+			text-align:center;
+			font-size:20px;
 		}
+
+
 
 		input[type=submit]{
 			width:100%;
-
+			height:40px;
 		}
 
 		input[type=text]{
 			display:none;
 		}
-
-		.checked{
+		#grade .fa{
+			font-size:6vmax;
+		}
+		#grade .checked{
 			color:orange;
-			font-size:7vw;
+			font-size:6vmax;
 			}
+
 
 		#grad{
 			float:left;
@@ -186,63 +226,87 @@
 		#footer{
 
 				width:100%;
-				overflow:hidden;
 				position:fixed;
-				background-color:black;
 				bottom:0;
 				height:5%;
-
-
+				border:none;
+				background-color:grey;
 		}
 
-		#footer a{
-			margin:0px 20px;
-			text-decoration:overline underline;
+		#footer button{
+			width:20%;
 			height:100%;
-			width:10%;
-			color:yellow;
-			top:20px;;
+			font-size:20px;
+			background-color:white;
+			border:solid 3px black;
 		}
 
-		#footer a:hover{
-			color:black;
+		#footer button:hover{
+			background-color:yellow;
 		}
+
+		#ave_grade{
+			display:none;
+			}
+
+
 
 			</style>
 	</head>
 	<body>
 			<div id="mainbox">
 					<div id="res_name"><p>{{information.2}}</p></div>
-					<div id="phone"><p>{{information.4}}</p></div>
+					<div id="phone"><p>{{information.4}} <i class="fa fa-phone"></i></p></div>
 					<div id="grade">
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
+						<p id="ave_grade">{{information.10}}</p>
+						<span id="one_star" class="fa fa-star checked"></span>
+						<span id="two_star" class="fa fa-star checked"></span>
+						<span id="three_star" class="fa fa-star checked"></span>
+						<span id="four_star" class="fa fa-star checked"></span>
+						<span id="five_star" class="fa fa-star"></span>
 					</div>
 					<div id="review_show">
 						<button id="big_map" onclick="big_map()">전체화면으로</button>
-						<p>리뷰</p>
+						<div>
+							<h1>{{information.11}}</h1>
+							<p>{{information.12}}</p>
+						</div>
+						<div>
+							<h1>{{information.13}}</h1>
+							<p>{{information.14}}</p>
+						</div>
+						<div>
+							<h1>{{information.15}}</h1>
+							<p>{{information.16}}</p>
+						</div>
+						<div>
+							<h1>{{information.17}}</h1>
+							<p>{{information.18}}</p>
+						</div>
+						<div>
+							<h1>{{information.19}}</h1>
+							<p>{{information.20}}</p>
+						</div>
+
 					</div>
 
 					<div id="write_review">
 						<form method="post" autocomplete="off">
 							{% csrf_token %}
 							<p id="grad">평점 : </p>
-							<input type="text" name="review_name" value="{{information.2}}">
+							<input type="text" name="review_name" value="{{information.0}}">
 							<input type="radio" name="grade" value="1">1
 							<input type="radio" name="grade" value="2">2
 							<input type="radio" name="grade" value="3">3
 							<input type="radio" name="grade" value="4">4
 							<input type="radio" name="grade" value="5">5
-							<input name="review" type="textbox"  Multiline="True" Enterkeybehavior="True">
+							<textarea name="review"></textarea>
 							<input type="submit" value="리뷰 작성">
 						</form>
 					</div>
 
 
-					<div id="res_price"><p>{{information.8}}</p></div>
+					<div id="res_price"><p>{{information.8}}<i class="fa fa-money"></i></p></div>
 					<div id="res_menu">
 						{% for menu in information.9.split %}
 						<p>{{ menu }}</p>
@@ -252,14 +316,77 @@
 			</div>
 
 			<div id="footer">
-				<a href="../">메인 메뉴로</a>
-				<a href="./">검색창으로</a>
-				<a href="javascript:window.history.back();">이전으로</a>
 
+				<button onclick="location.href='../'">메인메뉴로</button>
+				<button onclick="location.href='./'">다시검색</button>
+				<button onclick="location.href='javascript:window.history.back()'">이전화면으로</button>
 			</div>
 
 	<script>
 			var is_big = 0;
+
+			window.onload = function() {
+				number = document.getElementById("ave_grade").innerHTML;
+				if(number == "")
+				{
+					document.getElementById("one_star").className = "fa fa-star ";
+					document.getElementById("two_star").className = "fa fa-star ";
+					document.getElementById("three_star").className = "fa fa-star ";
+					document.getElementById("four_star").className = "fa fa-star ";
+					document.getElementById("five_star").className = "fa fa-star ";
+				}
+				else if(number >= 5)
+				{
+					document.getElementById("one_star").className = "fa fa-star checked";
+					document.getElementById("two_star").className = "fa fa-star checked";
+					document.getElementById("three_star").className = "fa fa-star checked";
+					document.getElementById("four_star").className = "fa fa-star checked";
+					document.getElementById("five_star").className = "fa fa-star checked";
+				}
+				else if(number >= 4)
+				{
+					document.getElementById("one_star").className = "fa fa-star checked";
+					document.getElementById("two_star").className = "fa fa-star checked";
+					document.getElementById("three_star").className = "fa fa-star checked";
+					document.getElementById("four_star").className = "fa fa-star checked";
+					document.getElementById("five_star").className = "fa fa-star ";
+				}
+				else if(number >= 3)
+				{
+					document.getElementById("one_star").className = "fa fa-star checked";
+					document.getElementById("two_star").className = "fa fa-star checked";
+					document.getElementById("three_star").className = "fa fa-star checked";
+					document.getElementById("four_star").className = "fa fa-star ";
+					document.getElementById("five_star").className = "fa fa-star ";
+				}
+				else if(number >= 2)
+				{
+					document.getElementById("one_star").className = "fa fa-star checked";
+					document.getElementById("two_star").className = "fa fa-star checked";
+					document.getElementById("three_star").className = "fa fa-star ";
+					document.getElementById("four_star").className = "fa fa-star ";
+					document.getElementById("five_star").className = "fa fa-star ";
+				}
+				else if(number >= 1)
+				{
+					document.getElementById("one_star").className = "fa fa-star checked";
+					document.getElementById("two_star").className = "fa fa-star ";
+					document.getElementById("three_star").className = "fa fa-star ";
+					document.getElementById("four_star").className = "fa fa-star ";
+					document.getElementById("five_star").className = "fa fa-star ";
+				}
+				else
+				{
+					document.getElementById("one_star").className = "fa fa-star ";
+					document.getElementById("two_star").className = "fa fa-star ";
+					document.getElementById("three_star").className = "fa fa-star ";
+					document.getElementById("four_star").className = "fa fa-star ";
+					document.getElementById("five_star").className = "fa fa-star ";
+				}
+
+
+
+			}
 
 			function big_map()
 			{
