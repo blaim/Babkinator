@@ -4,6 +4,7 @@
 <head>
         <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/5d4f9b3bee.js" crossorigin="anonymous"></script>
+
 <style>
 
 textarea
@@ -91,7 +92,7 @@ p {
 
 <h3><i class="fas fa-list-alt"></i>   개선 및 건의 사항</h3>
 <p>
-<form action="#" method="post" >
+<form action="#" method="post" autocomplete="off">
         {% csrf_token %}
         <h1><b><i class="fas fa-utensils"></i>  식당이름</b>
         <input name="res_name" type="text"><br></h1>
