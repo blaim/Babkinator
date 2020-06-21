@@ -175,13 +175,15 @@
             function babkinator(food_code)
             {
                // 0단계~7단계 질문 배열 통해서 선언
-                var Q0 = ["고기(해산물포함)입니까?"];
-                var Q1 = ["익혀 먹는 음식입니까?", "매운 음식입니까?"];
-                var Q2 = ["매운 음식입니까?", "해산물이 들어가는 음식입니까?", "면이 들어가는 음식입니까?"];
-                var Q3 = ["해산물이 들어가는 음식입니까?", "쌀이 들어가거나 밥과 함께 먹는 음식입니까?"];
-                var Q4 = ["닭이 들어가는 음식입니까?"];
-                var Q5 = ["돼지고기가 들어가는 음식입니까?"];
-                var Q6 = ["튀겨서 먹나요?"];
+                var Q0 = ["고기(해산물포함)는 어떻습니까?"];
+                var Q1 = ["익혀 먹는 음식은 어떻습니까?", "매운 음식은 어떻습니까?"];
+                var Q2 = ["매운 음식은 어떻습니까?", "해산물이 들어가는 음식은 어떻습니까?", "면이 들어가는 음식은 어떻습니까?"];
+                var Q3 = ["해산물이 들어가는 음식은 어떻습니까?", "밥이 들어가거나 밥과 함께 먹는 음식은 어떻습니까?","차가운 음식은 어떻습니까?"];
+                var Q4 = ["탕 또는 찌개 또는 전골은 어떻습니까?", "닭이 들어가는 음식은 어떻습니까?"];
+                var Q5 = ["찜요리는 어떻습니까?","돼지고기가 들어가는 음식 어떻습니까?", "튀겨 먹는 음식은 어떻습니까?"];
+                var Q6 = ["볶음요리는 어떻습니까?","구이 어떻습니까?"];
+                var Q7 = ["전골 또는 찌개는 어떻습니까?", "튀겨 먹는 음식은 어떻습니까?", "탕 또는 전골는 어떻습니까?"];
+                var Q8 = ["국밥 또는 탕은 어떻습니까?"];
                 var result = "to_server를 클릭해 제출해주세요.";
 
                 // 0단계 질문
@@ -239,26 +241,39 @@
                        document.getElementById('question').innerHTML = Q3[1];
 
 
-                    // 고기o, 익힘x, 해산물x 또는 고기x, 매움o, 면o 또는 고기x, 매움x, 면o
-                    else if(food_code == "ynn" || food_code == "nyy" || food_code == "nny")
+                    // 고기o, 익힘x, 해산물x
+                    else if(food_code == "ynn")
                         {
                             document.getElementById('to_server').style.display = "block";
                             document.getElementById('question').innerHTML = result;
                         }
+
+                    // 고기x, 매움o, 면o 또는 고기x, 매움x, 면o
+                    else if(food_code == "nyy" || food_code == "nny")
+                        // 차가운 음식은 어떻습니까?
+                       document.getElementById('question').innerHTML = Q3[2];
                  }
 
                 // 4단계 질문
                 else if(food_code.length == 4)
                 {
-                    /* 고기o, 익힘o, 매움o, 해산물o 또는 고기o, 익힘o, 매움x, 해산물o 또는
-                       고기o, 익힘x, 해산물o, 쌀o 또는 고기o, 익힘x, 해산물o, 쌀x 또는
+                    // 고기o, 익힘o, 매움o, 해산물o 또는 고기o, 익힘o, 매움x, 해산물o
+                    if (food_code == "yyyy" || food_code == "yyny")
+                        // 탕 또는 찌개 또는 전골은 어떻습니까?
+                        document.getElementById('question').innerHTML = Q4[0];
+
+                    /*
+                       고기o, 매움x, 해산물o, 밥o 또는 고기o, 매움x, 해산물o, 밥x
                        고기x, 매움o, 면x, 쌀o 또는 고기x, 매움o, 면x, 쌀x 또는
-                       고기x, 매움x, 면x, 쌀o 또는 고기x, 매움x, 면x, 쌀x
+                       고기x, 매움x, 면x, 쌀o 또는 고기x, 매움x, 면x, 쌀x 또는
+                       고기x, 매움o, 면o, 차가움o 또는  고기x, 매움o, 면o, 차가움x
+                       고기x, 매움x, 면o, 차가움o 또는 고기x, 매움x, 면o, 차가움x
                     */
-                    if( food_code == "yyyy" || food_code == "yyny" ||
-                       food_code == "ynyy" || food_code == "ynyn" ||
+                    else if( food_code == "ynyy" || food_code == "ynyn" ||
                        food_code == "nyny" || food_code == "nynn" ||
-                       food_code == "nnny" || food_code == "nnnn" )
+                       food_code == "nnny" || food_code == "nnnn" ||
+                       food_code == "nyyy" || food_code == "nyyn" ||
+                       food_code == "nnyy" || food_code == "nnyn" )
                     {
                         document.getElementById('to_server').style.display = "block";
                         document.getElementById('question').innerHTML = result;
@@ -267,7 +282,7 @@
                     // 고기o, 익힘o, 매움o, 해산물x 또는 고기o, 익힘o, 매움x, 해산물x
                     else if(food_code == "yyyn" || food_code == "yynn")
                         // 닭이 들어가는 음식입니까?
-                        document.getElementById('question').innerHTML = Q4[0];
+                        document.getElementById('question').innerHTML = Q4[1];
 
                  }
 
@@ -275,52 +290,143 @@
                 else if(food_code.length == 5)
                 {
                     /*
-                        고기o, 익힘o, 매움o, 해산물x, 닭o 또는 고기x, 익힘o, 매움o, 해산물x, 닭x 또는
-                        고기o, 익힘o, 매움x, 해산물x, 닭o
+                        고기o, 익힘o, 매움o, 해산물o, 탕,찌개,전골o 또는 고기o, 익힘o, 매움x, 해산물o, 탕,찌개,전골o
+                        고기o, 익힘o, 매움o, 해산물x, 닭o
                     */
-                    if(food_code == "yyyny" || food_code == "yyynn" ||
-                       food_code == "yynny")
+                    if(food_code == "yyyyy" || food_code == "yynyy" ||
+                        food_code == "yyyny")
                     {
                         document.getElementById('to_server').style.display = "block";
                         document.getElementById('question').innerHTML = result;
                     }
 
-
-                    // 고기o, 익힘o, 매움x, 해산물x, 닭x
-                    else if(food_code == "yynnn")
-                        // 돼지고기가 들어가는 음식입니까?
+                    // 고기o, 익힘o, 매움o, 해산물o, 탕,찌개,전골x 또는 고기o, 익힘o, 매움x, 해산물o, 탕,찌개,전골x
+                    else if(food_code == "yyyyn" || food_code == "yynyn")
+                        // 찜요리는 어떻습니까?
                         document.getElementById('question').innerHTML = Q5[0];
 
+                    // 고기o, 익힘o, 매움o, 해산물x, 닭x 또는 고기o, 익힘o, 매움x, 해산물x, 닭x
+                    else if(food_code == "yyynn" || food_code == "yynnn")
+                        // 돼지고기가 들어가는 음식 어떻습니까?
+                        document.getElementById('question').innerHTML = Q5[1];
+
+                    // 고기o, 익힘o, 매움x, 해산물x, 닭o
+                    else if (food_code == "yynny")
+                        // 튀겨 먹는 음식은 어떻습니까?
+                        document.getElementById('question').innerHTML = Q5[2];
                 }
 
 
                 // 6단계 질문
                 else if(food_code.length == 6)
                 {
-                    // 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지o
-                    if(food_code == "yynnny")
-                        // 튀겨서 먹나요?
-                        document.getElementById('question').innerHTML = Q6[0];
-
-                    // 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지x
-                    else if(food_code == "yynnnn")
-                        {
+                    /*
+                        고기o, 익힘o, 매움o, 해산물o, 탕,찌개,전골x, 찜o 또는 고기o, 익힘o, 매움x, 해산물o, 탕,찌개,전골x, 찜o 또는
+                        고기o, 익힘o, 매움o, 해산물x, 닭x, 돼지x 또는
+                        고기o, 익힘o, 매움x, 해산물x, 닭o, 튀김o 또는 고기o, 익힘o, 매움x, 해산물x, 닭o, 튀김x
+                    */
+                    if(food_code == "yyyyny" || food_code == "yynyny" ||
+                       food_code == "yyynnn"||
+                       food_code == "yynnyy" || food_code == "yynnyn")
+                    {
                         document.getElementById('to_server').style.display = "block";
                         document.getElementById('question').innerHTML = result;
-                        }
+                    }
+
+                    // 고기o, 익힘o, 매움o, 해산물o, 탕,찌개,전골x, 찜x 또는 고기o, 익힘o, 매움o, 해산물x, 닭x, 돼지o
+                    else if(food_code == "yyyynn" || food_code == "yyynny"){
+                        // 볶음요리는 어떻습니까?
+                        document.getElementById('question').innerHTML = Q6[0];
+                    }
+
+                    /*
+                        고기o, 익힘o, 매움x, 해산물o, 탕,찌개,전골x, 찜x 또는
+                        고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기o, 또는 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기x
+                    */
+
+                    else if(food_code == "yynynn" || food_code == "yynnny" || food_code == "yynnnn")
+                    {
+                        // 볶음요리는 어떻습니까?
+                        document.getElementById('question').innerHTML = Q6[1];
+                    }
+
+
                 }
 
                 // 7단계 질문
                 else if(food_code.length == 7)
                 {
-
-                    // 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지o, 튀김o 또는 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지o, 튀김x
-                    if(food_code == "yynnnyy" || food_code == "yynnnyn")
+                    /*
+                        고기o, 익힘o, 매움o, 해산물o, 탕,찌개,전골x, 찜x, 볶음o 또는 고기o, 익힘o, 매움o, 해산물o, 탕,찌개,전골x, 찜x, 볶음x 또는
+                        고기o, 익힘o, 매움o, 해산물x, 닭x, 돼지o, 볶음o 또는
+                        고기o, 익힘o, 매움x, 해산물o, 탕,찌개,전골x, 찜x, 구이o 또는 고기o, 익힘o, 매움x, 해산물o, 탕,찌개,전골x, 찜x, 구이x 또는
+                        고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기o, 구이o 또는 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기x, 구이o
+                    */
+                    if(food_code == "yyyynny" || food_code == "yyyynnn"||
+                       food_code == "yyynnyy" ||
+                       food_code == "yynynny" || food_code == "yynynnn" ||
+                       food_code == "yynnnyy" || food_code == "yynnnny")
                     {
                         document.getElementById('to_server').style.display = "block";
                         document.getElementById('question').innerHTML = result;
                     }
+
+                    // 고기o, 익힘o, 매움o, 해산물x, 닭x, 돼지o, 볶음x
+                    else if(food_code == "yyynnyn")
+                        // 전골 또는 찌개는 어떻습니까?
+                        document.getElementById('question').innerHTML = Q7[0];
+
+                    // 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기o, 구이x
+                    else if(food_code == "yynnnyn")
+                        // 튀겨 먹는 음식은 어떻습니까?
+                        document.getElementById('question').innerHTML = Q7[1];
+
+
+                    // 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기x, 구이x
+                    else if(food_code == "yynnnnn")
+                        // 탕 또는 전골는 어떻습니까?
+                        document.getElementById('question').innerHTML = Q7[2];
+
+
                 }
+
+
+                // 8단계 질문
+                else if(food_code.length == 8)
+                {
+                    /*
+                        고기o, 익힘o, 매움o, 해산물x, 닭x, 돼지o, 볶음x, 전골,찌개o 또는 고기o, 익힘o, 매움o, 해산물x, 닭x, 돼지o, 볶음x, 전골,찌개x 또는
+                        고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기o, 구이x, 튀김o 또는
+                        고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기x, 구이x, 탕,전골o 또는 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기x, 구이x, 탕,전골x
+                    */
+                    if(food_code == "yyynnyny" || food_code == "yyynnynn" ||
+                       food_code == "yynnnyny" ||
+                       food_code == "yynnnnny" || food_code == "yynnnnnn")
+                       {
+                            document.getElementById('to_server').style.display = "block";
+                            document.getElementById('question').innerHTML = result;
+                       }
+
+                    // 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기o, 구이x, 튀김x 또는 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기x, 구이x, 튀김x
+                    else if(food_code == "yynnnynn")
+                    // 탕 또는 전골는 어떻습니까?
+                        document.getElementById('question').innerHTML = Q8[0];
+
+
+                }
+
+                // 9단계 질문
+                else if(food_code.length == 9)
+                {
+                    // 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기o, 구이x, 튀김x, 탕, 전골o 또는 고기o, 익힘o, 매움x, 해산물x, 닭x, 돼지고기o, 구이x, 튀김x, 탕, 전골o
+                    if(food_code == "yynnnynny" || food_code == "yynnnynnn")
+                    {
+                        document.getElementById('to_server').style.display = "block";
+                        document.getElementById('question').innerHTML = result;
+                    }
+
+                }
+
 
             }
 
